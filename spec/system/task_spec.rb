@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Task', type: :system do
-  let(:project) { FactoryBot.create(:project) }
-  let(:task) { FactoryBot.create(:task, project_id: project.id)}
-  let(:completed_task) { FactoryBot.create(:task, :completed_task, project_id: project.id) }
+  let(:project) { create(:project) }
+  let(:task) { create(:task, project_id: project.id)}
+  let(:completed_task) { create(:task, :completed_task, project_id: project.id) }
   describe 'Task一覧' do
     context '正常系' do
       it '一覧ページにアクセスした場合、Taskが表示されること' do
@@ -56,7 +56,7 @@ RSpec.describe 'Task', type: :system do
 
   describe 'Task編集' do
     context '正常系' do
-      xit 'Taskを編集した場合、一覧画面で編集後の内容が表示されること' do
+      it 'Taskを編集した場合、一覧画面で編集後の内容が表示されること' do
         # FIXME: テストが失敗するので修正してください
         visit edit_project_task_path(project, task)
         fill_in 'Deadline', with: Time.current
