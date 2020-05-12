@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Task', type: :system do
   let(:project) { create(:project) }
-  let(:task) { create(:task, project_id: project.id)}
+  let(:task) { create(:task, project_id: project.id) }
   let(:completed_task) { create(:task, :completed_task, project_id: project.id) }
   describe 'Task一覧' do
     context '正常系' do
@@ -56,10 +56,10 @@ RSpec.describe 'Task', type: :system do
 
   describe 'Task編集' do
     context '正常系' do
-      it 'Taskを編集した場合、一覧画面で編集後の内容が表示されること' do
+      fit 'Taskを編集した場合、一覧画面で編集後の内容が表示されること' do
         # FIXME: テストが失敗するので修正してください
         visit edit_project_task_path(project, task)
-        fill_in 'Deadline', with: Time.current
+        fill_in 'Deadline', with: task.deadline
         click_button 'Update Task'
         click_link 'Back'
         expect(find('.task_list')).to have_content task.deadline.strftime('%-m/%d %-H:%M')

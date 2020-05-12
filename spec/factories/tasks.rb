@@ -4,7 +4,7 @@ FactoryBot.define do
     status { rand(2) }
     from = Date.parse("2019/08/01")
     to   = Date.parse("2019/12/31")
-    deadline { Random.rand(from..to) }
+    deadline { Random.rand(from..to).strftime("%-m/%d %-H:%M") }
 
     trait :completed_task do
       status { :done }
